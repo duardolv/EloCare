@@ -3,6 +3,15 @@
 @import "tailwindcss/utilities.css";
 @import "nativewind/theme";
 
+@theme {
+  --font-body: 'AtkinsonHyperlegibleNext_400Regular';
+  --font-heading: 'AtkinsonHyperlegibleNext_700Bold';
+  /* Custom fonts are one static weight per family name — `font-semibold`
+     (font-weight:600) has no real 600-weight face to switch to, so labels
+     that need semibold select this family directly instead. */
+  --font-label: 'AtkinsonHyperlegibleNext_600SemiBold';
+}
+
 /* ─── Theme: design tokens (light / dark) ─────────────────────────
    1. :root              — light defaults (all platforms)
    2. @media dark :root  — dark defaults; nativewind maps this to

@@ -12,10 +12,16 @@ export default function AppTabs() {
       <TabList asChild>
         <CustomTabList>
           <TabTrigger name="home" href="/" asChild>
-            <TabButton>Home</TabButton>
+            <TabButton>Início</TabButton>
           </TabTrigger>
-          <TabTrigger name="explore" href="/explore" asChild>
-            <TabButton>Explore</TabButton>
+          <TabTrigger name="care" href="/care" asChild>
+            <TabButton>Cuidado</TabButton>
+          </TabTrigger>
+          <TabTrigger name="agenda" href="/agenda" asChild>
+            <TabButton>Agenda</TabButton>
+          </TabTrigger>
+          <TabTrigger name="history" href="/history" asChild>
+            <TabButton>Histórico</TabButton>
           </TabTrigger>
         </CustomTabList>
       </TabList>

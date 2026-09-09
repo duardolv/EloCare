@@ -1,20 +1,87 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { BookOpen, Footprints, Sparkles } from 'lucide-react-native';
+import React from 'react';
 
+import { AppHeader } from '@/components/shared/app-header';
+import { Avatar, AvatarFallbackText } from '@/components/ui/avatar';
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
+import { Pressable } from '@/components/ui/pressable';
+import { SafeAreaView } from '@/components/ui/safe-area-view';
+import { ScrollView } from '@/components/ui/scroll-view';
+import { Switch } from '@/components/ui/switch';
 import { Text } from '@/components/ui/text';
-import { MaxContentWidth } from '@/constants/theme';
+import { VStack } from '@/components/ui/vstack';
+import { ActionListItem } from '@/components/shared/action-list-item';
+import { DailyStatusCard } from '@/components/home/daily-status-card';
+import { QuickActionsGrid } from '@/components/home/quick-actions-grid';
+import { BottomTabInset, Spacing } from '@/constants/theme';
 
 export default function HomeScreen() {
+  const [safeExitMode, setSafeExitMode] = React.useState(false);
+
   return (
     <Box className="flex-1 bg-background">
-      <SafeAreaView className="flex-1 items-center justify-center px-4">
-        <Box className="items-center gap-2" style={{ maxWidth: MaxContentWidth }}>
-          <Heading size="2xl" className="text-foreground">
-            Home
-          </Heading>
-          <Text className="text-muted-foreground">Nothing here yet.</Text>
-        </Box>
+      {/* SafeAreaView (react-native-safe-area-context) ignores className on
+          native — it's a plain Fabric view under the hood — so flex sizing
+          has to go through style here instead. */}
+      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+        <AppHeader
+          right={
+            <Pressable className="active:opacity-80">
+              <Avatar>
+                <AvatarFallbackText>Família</AvatarFallbackText>
+              </Avatar>
+            </Pressable>
+          }
+        />
+        <ScrollView
+          className="flex-1"
+          contentContainerClassName="gap-6 px-5 pt-4"
+          showsVerticalScrollIndicator={false}
+        >
+          <VStack space="xs">
+            <Heading size="xl">Olá, Família</Heading>
+            <Text size="lg" className="text-muted-foreground">
+              Como estão as coisas hoje?
+            </Text>
+          </VStack>
+
+          <DailyStatusCard />
+
+          <VStack space="lg">
+            <QuickActionsGrid />
+
+            <ActionListItem
+              icon={Sparkles}
+              iconSolid
+              title="Resumo Semanal"
+              subtitle="Insights gentis sobre a rotina"
+            />
+
+            <ActionListItem
+              icon={Footprints}
+              iconTone="muted"
+              title="Modo Saída Segura"
+              subtitle="Ative para passeios longos"
+              trailing={<Switch value={safeExitMode} onValueChange={setSafeExitMode} />}
+              className="border-0"
+            />
+
+            <ActionListItem
+              icon={BookOpen}
+              iconTone="accent"
+              iconSolid
+              title="Diário Emocional"
+              subtitle="Verifique como foi a semana"
+              className="border-accent/50 bg-accent/20"
+            />
+          </VStack>
+
+          {/* Clears the floating native tab bar — a contentContainerStyle prop
+              here would silently replace (not merge with) the padding/gap
+              from contentContainerClassName above, so it's a plain spacer instead. */}
+          <Box style={{ height: BottomTabInset + Spacing.four }} />
+        </ScrollView>
       </SafeAreaView>
     </Box>
   );
