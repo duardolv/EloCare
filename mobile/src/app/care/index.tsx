@@ -1,5 +1,5 @@
 import { Link } from 'expo-router';
-import { ArrowLeft, Footprints, Heart, Moon } from 'lucide-react-native';
+import { Activity, ArrowLeft, Footprints, Heart, Moon } from 'lucide-react-native';
 import React from 'react';
 
 import { AppHeader } from '@/components/shared/app-header';
@@ -56,6 +56,15 @@ export default function RadarScreen() {
                 iconTone="primary"
                 title="Círculo de Cuidado"
                 subtitle="Veja a rede de apoio e as tarefas da família"
+              />
+            </Link>
+
+            <Link href="/care/adherence" asChild>
+              <ActionListItem
+                icon={Activity}
+                iconTone="success"
+                title="Adesão"
+                subtitle="Acompanhe o uso contínuo dos medicamentos"
               />
             </Link>
           </VStack>

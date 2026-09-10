@@ -1,29 +1,42 @@
 import React from 'react';
 
+import { HStack } from '@/components/ui/hstack';
+import { Icon } from '@/components/ui/icon';
 import { Text } from '@/components/ui/text';
 
 type StatusPillTone = 'neutral' | 'success' | 'warning' | 'destructive';
 
-const TONE_CLASSES: Record<StatusPillTone, string> = {
-  neutral: 'bg-muted text-muted-foreground',
-  success: 'bg-success/10 text-success',
-  warning: 'bg-warning/15 text-warning-foreground',
-  destructive: 'bg-destructive/15 text-destructive',
+const BG_CLASSES: Record<StatusPillTone, string> = {
+  neutral: 'bg-muted',
+  success: 'bg-success/10',
+  warning: 'bg-warning/15',
+  destructive: 'bg-destructive/15',
+};
+
+const TEXT_CLASSES: Record<StatusPillTone, string> = {
+  neutral: 'text-muted-foreground',
+  success: 'text-success',
+  warning: 'text-warning-foreground',
+  destructive: 'text-destructive',
 };
 
 type StatusPillProps = {
   label: string;
   tone?: StatusPillTone;
+  icon?: React.ComponentProps<typeof Icon>['as'];
   className?: string;
 };
 
-export function StatusPill({ label, tone = 'neutral', className }: StatusPillProps) {
+export function StatusPill({ label, tone = 'neutral', icon, className }: StatusPillProps) {
   return (
-    <Text
-      size="sm"
-      className={`font-label self-start rounded-full px-3 py-1 ${TONE_CLASSES[tone]} ${className ?? ''}`}
+    <HStack
+      space="xs"
+      className={`items-center self-start rounded-full px-3 py-1 ${BG_CLASSES[tone]} ${className ?? ''}`}
     >
-      {label}
-    </Text>
+      {icon ? <Icon as={icon} size="sm" className={TEXT_CLASSES[tone]} /> : null}
+      <Text size="sm" className={`font-label ${TEXT_CLASSES[tone]}`}>
+        {label}
+      </Text>
+    </HStack>
   );
 }

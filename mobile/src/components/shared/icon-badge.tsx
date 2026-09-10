@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@/components/ui/box';
 import { Icon } from '@/components/ui/icon';
 
-type IconBadgeTone = 'primary' | 'accent' | 'destructive' | 'muted' | 'success';
+type IconBadgeTone = 'primary' | 'accent' | 'destructive' | 'muted' | 'success' | 'warning';
 type IconBadgeSize = 'sm' | 'md' | 'lg';
 
 const CONTAINER_SIZE: Record<IconBadgeSize, string> = {
@@ -26,6 +26,7 @@ const TONE_CLASSES: Record<IconBadgeTone, string> = {
   destructive: 'bg-destructive/15',
   muted: 'bg-muted',
   success: 'bg-success/15',
+  warning: 'bg-warning/15',
 };
 
 const TONE_ICON_CLASSES: Record<IconBadgeTone, string> = {
@@ -34,6 +35,7 @@ const TONE_ICON_CLASSES: Record<IconBadgeTone, string> = {
   destructive: 'text-destructive',
   muted: 'text-muted-foreground',
   success: 'text-success',
+  warning: 'text-warning',
 };
 
 const SOLID_TONE_CLASSES: Record<IconBadgeTone, string> = {
@@ -42,6 +44,7 @@ const SOLID_TONE_CLASSES: Record<IconBadgeTone, string> = {
   destructive: 'bg-destructive',
   muted: 'bg-muted',
   success: 'bg-success',
+  warning: 'bg-warning',
 };
 
 // no --destructive-foreground token exists in global.css, so the destructive
@@ -52,6 +55,7 @@ const SOLID_TONE_ICON_CLASSES: Record<IconBadgeTone, string> = {
   destructive: 'text-foreground',
   muted: 'text-foreground',
   success: 'text-success-foreground',
+  warning: 'text-warning-foreground',
 };
 
 type IconBadgeProps = {
