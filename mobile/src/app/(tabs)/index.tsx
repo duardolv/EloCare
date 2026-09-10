@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import { BookOpen, Footprints, Sparkles } from 'lucide-react-native';
 import React from 'react';
 
@@ -51,30 +52,36 @@ export default function HomeScreen() {
           <VStack space="lg">
             <QuickActionsGrid />
 
-            <ActionListItem
-              icon={Sparkles}
-              iconSolid
-              title="Resumo Semanal"
-              subtitle="Insights gentis sobre a rotina"
-            />
+            <Link href="/weekly-summary" asChild>
+              <ActionListItem
+                icon={Sparkles}
+                iconSolid
+                title="Resumo Semanal"
+                subtitle="Insights gentis sobre a rotina"
+              />
+            </Link>
 
-            <ActionListItem
-              icon={Footprints}
-              iconTone="muted"
-              title="Modo Saída Segura"
-              subtitle="Ative para passeios longos"
-              trailing={<Switch value={safeExitMode} onValueChange={setSafeExitMode} />}
-              className="border-0"
-            />
+            <Link href="/safe-exit" asChild>
+              <ActionListItem
+                icon={Footprints}
+                iconTone="muted"
+                title="Modo Saída Segura"
+                subtitle="Ative para passeios longos"
+                trailing={<Switch value={safeExitMode} onValueChange={setSafeExitMode} />}
+                className="border-0"
+              />
+            </Link>
 
-            <ActionListItem
-              icon={BookOpen}
-              iconTone="accent"
-              iconSolid
-              title="Diário Emocional"
-              subtitle="Verifique como foi a semana"
-              className="border-accent/50 bg-accent/20"
-            />
+            <Link href="/diary" asChild>
+              <ActionListItem
+                icon={BookOpen}
+                iconTone="accent"
+                iconSolid
+                title="Diário Emocional"
+                subtitle="Verifique como foi a semana"
+                className="border-accent/50 bg-accent/20"
+              />
+            </Link>
           </VStack>
 
           {/* Clears the floating native tab bar — a contentContainerStyle prop

@@ -5,12 +5,11 @@ import {
   AtkinsonHyperlegibleNext_700Bold,
   AtkinsonHyperlegibleNext_700Bold_Italic,
 } from '@expo-google-fonts/atkinson-hyperlegible-next';
-import { DefaultTheme, ThemeProvider } from 'expo-router';
+import { DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
 
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
 import { AppColorMode } from '@/constants/theme';
@@ -18,7 +17,7 @@ import '@/global.css';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function TabLayout() {
+export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
     AtkinsonHyperlegibleNext_400Regular,
     AtkinsonHyperlegibleNext_400Regular_Italic,
@@ -36,7 +35,14 @@ export default function TabLayout() {
     <GluestackUIProvider mode={AppColorMode}>
       <ThemeProvider value={DefaultTheme}>
         <AnimatedSplashOverlay />
-        <AppTabs />
+        {/* (tabs) owns the native tab bar; these three are pushed on top of
+            it from Início rows, so they need to live outside that navigator. */}
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="safe-exit" />
+          <Stack.Screen name="diary" />
+          <Stack.Screen name="weekly-summary" />
+        </Stack>
       </ThemeProvider>
     </GluestackUIProvider>
   );
