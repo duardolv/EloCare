@@ -36,7 +36,7 @@ export function MedicationCard({ icon, name, subtitle, variant }: MedicationCard
 
       <VStack className="flex-1">
         <Heading
-          size="lg"
+          size="xl"
           className={isTaken ? 'text-foreground/80 line-through' : 'text-foreground'}
         >
           {name}

@@ -1,4 +1,4 @@
-import { CircleUserRound, Info, Play, Square } from 'lucide-react-native';
+import { Info, Play, Square } from 'lucide-react-native';
 import React from 'react';
 
 import { AppHeader } from '@/components/shared/app-header';
@@ -7,7 +7,6 @@ import { Button, ButtonIcon, ButtonText } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Heading } from '@/components/ui/heading';
 import { Icon } from '@/components/ui/icon';
-import { Pressable } from '@/components/ui/pressable';
 import { SafeAreaView } from '@/components/ui/safe-area-view';
 import { Text } from '@/components/ui/text';
 import { StatusIndicator } from '@/components/safe-exit/status-indicator';
@@ -19,13 +18,7 @@ export default function SafeExitScreen() {
     <Box className="flex-1 bg-background">
       {/* SafeAreaView ignores className on native — see app/(tabs)/index.tsx */}
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <AppHeader
-          right={
-            <Pressable className="h-12 w-12 items-center justify-center rounded-full active:opacity-80">
-              <Icon as={CircleUserRound} className="text-muted-foreground" />
-            </Pressable>
-          }
-        />
+        <AppHeader />
 
         <Box className="flex-1 items-center justify-center gap-2 px-6">
           <StatusIndicator active={isActive} />

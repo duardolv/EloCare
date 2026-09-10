@@ -22,7 +22,7 @@ export function InsightCard({ icon, tone, title, description, children }: Insigh
         <IconBadge icon={icon} tone={tone} />
         <Heading size="lg">{title}</Heading>
       </HStack>
-      <Text size="md" className="text-muted-foreground">
+      <Text size="lg" className="text-muted-foreground">
         {description}
       </Text>
       {children}

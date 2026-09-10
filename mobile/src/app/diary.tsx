@@ -1,11 +1,8 @@
-import { CircleUserRound } from 'lucide-react-native';
 import React from 'react';
 
 import { AppHeader } from '@/components/shared/app-header';
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
-import { Icon } from '@/components/ui/icon';
-import { Pressable } from '@/components/ui/pressable';
 import { SafeAreaView } from '@/components/ui/safe-area-view';
 import { ScrollView } from '@/components/ui/scroll-view';
 import { VStack } from '@/components/ui/vstack';
@@ -50,13 +47,7 @@ export default function DiaryScreen() {
     <Box className="flex-1 bg-background">
       {/* SafeAreaView ignores className on native — see app/(tabs)/index.tsx */}
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <AppHeader
-          right={
-            <Pressable className="h-12 w-12 items-center justify-center rounded-full active:opacity-80">
-              <Icon as={CircleUserRound} className="text-muted-foreground" />
-            </Pressable>
-          }
-        />
+        <AppHeader />
         <ScrollView
           className="flex-1"
           contentContainerClassName="px-5 pt-6"

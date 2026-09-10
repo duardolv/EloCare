@@ -22,7 +22,7 @@ export function FamilyBalanceCard({ overloadPercentage }: FamilyBalanceCardProps
           <Icon as={Scale} className="text-warning" />
           <Heading size="xl">Equilíbrio Familiar</Heading>
         </HStack>
-        <StatusPill label="Estável" tone="neutral" />
+        <StatusPill label="Estável" tone="neutral" size="md" />
       </HStack>
 
       <VStack space="md">

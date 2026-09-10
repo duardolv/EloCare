@@ -5,7 +5,6 @@ import { Icon } from '@/components/ui/icon';
 import { Text } from '@/components/ui/text';
 import { VStack } from '@/components/ui/vstack';
 import { IconBadge } from '@/components/shared/icon-badge';
-import { StatusPill } from '@/components/shared/status-pill';
 
 type AlertCardTone = 'destructive' | 'warning';
 
@@ -14,9 +13,9 @@ const CARD_TONE_CLASSES: Record<AlertCardTone, string> = {
   warning: 'border-border bg-card',
 };
 
-const STATUS_PILL_TONE: Record<AlertCardTone, 'destructive' | 'warning'> = {
-  destructive: 'destructive',
-  warning: 'warning',
+const TAG_CLASSES: Record<AlertCardTone, string> = {
+  destructive: 'bg-destructive/15 text-destructive',
+  warning: 'bg-warning/15 text-warning-foreground',
 };
 
 type AlertCardProps = {
@@ -31,8 +30,14 @@ export function AlertCard({ icon, tone, tagLabel, description }: AlertCardProps)
     <Card className={`flex-row gap-4 ${CARD_TONE_CLASSES[tone]}`}>
       <IconBadge icon={icon} tone={tone} size="sm" />
       <VStack space="xs" className="flex-1 items-start">
-        <StatusPill tone={STATUS_PILL_TONE[tone]} label={tagLabel} />
-        <Text size="md" className="leading-tight text-foreground">
+        {/* Eyebrow tag — bold/uppercase, not the label-lg-based StatusPill */}
+        <Text
+          size="xs"
+          className={`self-start rounded-full px-2 py-0.5 font-heading uppercase tracking-wide ${TAG_CLASSES[tone]}`}
+        >
+          {tagLabel}
+        </Text>
+        <Text size="lg" className="leading-tight text-foreground">
           {description}
         </Text>
       </VStack>

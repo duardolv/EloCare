@@ -1,4 +1,4 @@
-import { Bell, CarTaxiFront, Pill, ShoppingCart } from 'lucide-react-native';
+import { CarTaxiFront, Pill, ShoppingCart } from 'lucide-react-native';
 import React from 'react';
 
 import { AppHeader } from '@/components/shared/app-header';
@@ -8,7 +8,6 @@ import { Box } from '@/components/ui/box';
 import { Button, ButtonText } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
-import { Icon } from '@/components/ui/icon';
 import { SafeAreaView } from '@/components/ui/safe-area-view';
 import { ScrollView } from '@/components/ui/scroll-view';
 import { Text } from '@/components/ui/text';
@@ -22,7 +21,7 @@ export default function CareCircleScreen() {
     <Box className="flex-1 bg-background">
       {/* SafeAreaView ignores className on native — see app/index.tsx */}
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <AppHeader right={<Icon as={Bell} size="xl" className="text-muted-foreground" />} />
+        <AppHeader />
         <ScrollView
           className="flex-1"
           contentContainerClassName="gap-8 px-5 pt-6"
@@ -65,6 +64,7 @@ export default function CareCircleScreen() {
                 icon={Pill}
                 iconTone="accent"
                 title="Organizar Remédios"
+                titleWeight="semibold"
                 subtitle="Atribuído a: Familiar 1"
                 trailing={<StatusPill label="Pendente" tone="neutral" />}
               />
@@ -72,6 +72,7 @@ export default function CareCircleScreen() {
                 icon={ShoppingCart}
                 iconTone="muted"
                 title="Compras da Semana"
+                titleWeight="semibold"
                 subtitle="Atribuído a: Familiar 2"
                 trailing={<StatusPill label="Concluído" tone="success" />}
               />
@@ -79,6 +80,7 @@ export default function CareCircleScreen() {
                 icon={CarTaxiFront}
                 iconTone="muted"
                 title="Acompanhar Consulta"
+                titleWeight="semibold"
                 subtitle="Atribuído a: Familiar 3"
                 trailing={<StatusPill label="Agendado" tone="neutral" />}
               />

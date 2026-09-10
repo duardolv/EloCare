@@ -21,9 +21,10 @@ export function WeeklyAdherenceCard({ adherencePercentage, days }: WeeklyAdheren
   return (
     <Card className="gap-6 p-6">
       <HStack className="items-center justify-between">
-        <Heading size="lg">Histórico Semanal</Heading>
+        <Heading size="xl">Histórico Semanal</Heading>
         <StatusPill
           tone="success"
+          size="md"
           label={`${adherencePercentage}%`}
           icon={TrendingUp}
         />

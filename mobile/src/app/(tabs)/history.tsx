@@ -8,7 +8,6 @@ import {
   PillBottle,
   TestTube,
   TriangleAlert,
-  User,
 } from 'lucide-react-native';
 import React from 'react';
 
@@ -18,8 +17,6 @@ import { Box } from '@/components/ui/box';
 import { Button, ButtonText } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
-import { Icon } from '@/components/ui/icon';
-import { Pressable } from '@/components/ui/pressable';
 import { SafeAreaView } from '@/components/ui/safe-area-view';
 import { ScrollView } from '@/components/ui/scroll-view';
 import { Text } from '@/components/ui/text';
@@ -34,13 +31,7 @@ export default function HistoryScreen() {
     <Box className="flex-1 bg-background">
       {/* SafeAreaView ignores className on native — see app/index.tsx */}
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <AppHeader
-          right={
-            <Pressable className="h-10 w-10 items-center justify-center rounded-full border-2 border-border bg-muted active:opacity-80">
-              <Icon as={User} size="sm" className="text-muted-foreground" />
-            </Pressable>
-          }
-        />
+        <AppHeader />
         <ScrollView
           className="flex-1"
           contentContainerClassName="gap-8 px-5 pt-6"
@@ -76,7 +67,7 @@ export default function HistoryScreen() {
               subtitle="(11) 98765-4321"
               trailing={
                 <Button size="sm" className="rounded-lg bg-muted">
-                  <ButtonText className="font-label text-primary">Ligar</ButtonText>
+                  <ButtonText className="font-label text-base text-primary">Ligar</ButtonText>
                 </Button>
               }
             />

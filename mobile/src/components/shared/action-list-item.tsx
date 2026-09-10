@@ -15,6 +15,10 @@ type ActionListItemProps = {
   iconTone?: React.ComponentProps<typeof IconBadge>['tone'];
   iconSolid?: boolean;
   title: string;
+  /** Some rows use a bold (700) title, others just the label-lg semibold
+   * (600) weight — the two HTML mockups disagree row by row, so this stays
+   * per-instance rather than a single hardcoded choice. */
+  titleWeight?: 'bold' | 'semibold';
   subtitle: string;
   trailing?: React.ReactNode;
   onPress?: () => void;
@@ -26,6 +30,7 @@ export function ActionListItem({
   iconTone = 'primary',
   iconSolid = false,
   title,
+  titleWeight = 'bold',
   subtitle,
   trailing = <Icon as={ChevronRight} className="text-muted-foreground" />,
   onPress,
@@ -37,7 +42,13 @@ export function ActionListItem({
         <HStack space="lg" className="flex-1 items-center">
           <IconBadge icon={icon} tone={iconTone} solid={iconSolid} />
           <VStack space="xs" className="flex-1 items-start">
-            <Heading size="sm">{title}</Heading>
+            {titleWeight === 'bold' ? (
+              <Heading size="sm">{title}</Heading>
+            ) : (
+              <Text size="md" className="font-label text-foreground">
+                {title}
+              </Text>
+            )}
             <Text size="sm" className="text-muted-foreground">
               {subtitle}
             </Text>

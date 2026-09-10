@@ -1,4 +1,4 @@
-import { Activity, Droplet, Pill } from 'lucide-react-native';
+import { Droplet, Pill } from 'lucide-react-native';
 import React from 'react';
 
 import { AppHeader } from '@/components/shared/app-header';
@@ -6,7 +6,6 @@ import { Box } from '@/components/ui/box';
 import { Button, ButtonText } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
-import { Icon } from '@/components/ui/icon';
 import { SafeAreaView } from '@/components/ui/safe-area-view';
 import { ScrollView } from '@/components/ui/scroll-view';
 import { Text } from '@/components/ui/text';
@@ -40,13 +39,7 @@ export default function AdherenceScreen() {
     <Box className="flex-1 bg-background">
       {/* SafeAreaView ignores className on native — see app/index.tsx */}
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <AppHeader
-          right={
-            <Box className="h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-              <Icon as={Activity} className="text-primary" />
-            </Box>
-          }
-        />
+        <AppHeader />
         <ScrollView
           className="flex-1"
           contentContainerClassName="gap-6 px-5 pt-6"
@@ -69,14 +62,14 @@ export default function AdherenceScreen() {
               variant={filter === 'pending' ? 'default' : 'outline'}
               className="h-12 flex-1 rounded-xl"
             >
-              <ButtonText className="font-label">Pendentes ({PENDING_MEDICATIONS.length})</ButtonText>
+              <ButtonText className="font-label text-base">Pendentes ({PENDING_MEDICATIONS.length})</ButtonText>
             </Button>
             <Button
               onPress={() => setFilter('taken')}
               variant={filter === 'taken' ? 'default' : 'outline'}
               className="h-12 flex-1 rounded-xl"
             >
-              <ButtonText className="font-label">Concluídos ({TAKEN_MEDICATIONS.length})</ButtonText>
+              <ButtonText className="font-label text-base">Concluídos ({TAKEN_MEDICATIONS.length})</ButtonText>
             </Button>
           </HStack>
 

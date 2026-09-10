@@ -17,7 +17,7 @@ export function DocumentTile({ icon, tone, label, onPress }: DocumentTileProps) 
     <Pressable onPress={onPress} className="active:opacity-80">
       <Card className="w-[120px] items-center gap-2 p-4">
         <IconBadge icon={icon} tone={tone} size="sm" />
-        <Text size="sm" className="text-center text-muted-foreground">
+        <Text size="sm" className="font-label text-center text-muted-foreground">
           {label}
         </Text>
       </Card>

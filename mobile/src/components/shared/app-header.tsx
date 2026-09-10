@@ -1,41 +1,28 @@
-import { Flower2 } from 'lucide-react-native';
 import React from 'react';
 
+import { Avatar, AvatarFallbackText } from '@/components/ui/avatar';
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
 import { Icon } from '@/components/ui/icon';
+import { Pressable } from '@/components/ui/pressable';
+import { SpaIcon } from '@/components/shared/spa-icon';
 
-type AppHeaderProps = {
-  align?: 'start' | 'center';
-  right?: React.ReactNode;
-  desktopNav?: React.ReactNode;
-};
-
-export function AppHeader({ align = 'start', right, desktopNav }: AppHeaderProps) {
-  const logo = (
-    <HStack space="sm" className="items-center">
-      <Icon as={Flower2} size="xl" className="text-primary" />
-      <Heading size="2xl" className="text-primary">
-        EloCare
-      </Heading>
-    </HStack>
-  );
-
+export function AppHeader() {
   return (
     <Box className="h-16 w-full flex-row items-center justify-between bg-background px-5 shadow-sm">
-      {align === 'center' ? (
-        <>
-          <Box className="w-8" />
-          <Box className="absolute inset-x-0 items-center">{logo}</Box>
-        </>
-      ) : (
-        logo
-      )}
+      <HStack space="sm" className="items-center">
+        <Icon as={SpaIcon} size="xl" className="text-primary" />
+        <Heading size="2xl" className="text-primary">
+          EloCare
+        </Heading>
+      </HStack>
 
-      {desktopNav}
-
-      <Box>{right}</Box>
+      <Pressable className="active:opacity-80">
+        <Avatar>
+          <AvatarFallbackText>Família</AvatarFallbackText>
+        </Avatar>
+      </Pressable>
     </Box>
   );
 }

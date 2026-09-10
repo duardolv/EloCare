@@ -16,14 +16,14 @@ export function DayStatusDot({ letter, status }: DayStatusDotProps) {
   return (
     <Box className="items-center gap-2">
       <Text
-        size="sm"
-        className={
+        size="md"
+        className={`font-label ${
           status === 'today'
-            ? 'font-label text-foreground'
+            ? 'text-foreground'
             : status === 'pending'
               ? 'text-muted-foreground/50'
               : 'text-muted-foreground'
-        }
+        }`}
       >
         {letter}
       </Text>

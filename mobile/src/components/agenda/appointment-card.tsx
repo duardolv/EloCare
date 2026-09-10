@@ -26,7 +26,7 @@ export function AppointmentCard({ icon, tone, kind, title, faded = false }: Appo
     <Card className={`gap-2 p-5 ${faded ? 'opacity-70' : ''}`}>
       <HStack space="sm" className="items-center">
         <IconBadge icon={icon} tone={tone} size="sm" />
-        <Text size="sm" className={`font-label uppercase tracking-wider ${KIND_TEXT_CLASSES[tone] ?? 'text-primary'}`}>
+        <Text size="md" className={`font-label uppercase tracking-wider ${KIND_TEXT_CLASSES[tone] ?? 'text-primary'}`}>
           {kind}
         </Text>
       </HStack>

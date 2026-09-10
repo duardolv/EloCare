@@ -1,5 +1,4 @@
 import {
-  Bell,
   CalendarDays,
   CircleCheckBig,
   Lightbulb,
@@ -19,7 +18,6 @@ import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
 import { Icon } from '@/components/ui/icon';
-import { Pressable } from '@/components/ui/pressable';
 import { SafeAreaView } from '@/components/ui/safe-area-view';
 import { ScrollView } from '@/components/ui/scroll-view';
 import { Text } from '@/components/ui/text';
@@ -34,21 +32,7 @@ export default function WeeklySummaryScreen() {
     <Box className="flex-1 bg-background">
       {/* SafeAreaView ignores className on native — see app/(tabs)/index.tsx */}
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <AppHeader
-          right={
-            <HStack space="md" className="items-center">
-              <Pressable className="active:opacity-80">
-                <Box className="relative">
-                  <Icon as={Bell} className="text-primary" />
-                  <Box className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-background bg-destructive" />
-                </Box>
-              </Pressable>
-              <Avatar>
-                <AvatarFallbackText>MF</AvatarFallbackText>
-              </Avatar>
-            </HStack>
-          }
-        />
+        <AppHeader />
         <ScrollView
           className="flex-1"
           contentContainerClassName="gap-8 px-5 pt-6"
@@ -121,7 +105,7 @@ export default function WeeklySummaryScreen() {
                 title="Agenda"
                 description="Compareceu à consulta de rotina com Dr. Silva. Fisioterapia realizada 2 vezes conforme programado."
               >
-                <StatusPill tone="neutral" label="Próx: Cárdio dia 24" />
+                <StatusPill tone="neutral" size="xs" label="Próx: Cárdio dia 24" />
               </InsightCard>
 
               <InsightCard

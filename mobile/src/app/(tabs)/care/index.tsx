@@ -21,7 +21,7 @@ export default function RadarScreen() {
     <Box className="flex-1 bg-background">
       {/* SafeAreaView ignores className on native — see app/index.tsx */}
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <AppHeader align="center" />
+        <AppHeader />
         <ScrollView
           className="flex-1"
           contentContainerClassName="items-center gap-8 px-5 pt-4"

@@ -3,10 +3,8 @@ import { BookOpen, Footprints, Sparkles } from 'lucide-react-native';
 import React from 'react';
 
 import { AppHeader } from '@/components/shared/app-header';
-import { Avatar, AvatarFallbackText } from '@/components/ui/avatar';
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
-import { Pressable } from '@/components/ui/pressable';
 import { SafeAreaView } from '@/components/ui/safe-area-view';
 import { ScrollView } from '@/components/ui/scroll-view';
 import { Switch } from '@/components/ui/switch';
@@ -26,15 +24,7 @@ export default function HomeScreen() {
           native — it's a plain Fabric view under the hood — so flex sizing
           has to go through style here instead. */}
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <AppHeader
-          right={
-            <Pressable className="active:opacity-80">
-              <Avatar>
-                <AvatarFallbackText>Família</AvatarFallbackText>
-              </Avatar>
-            </Pressable>
-          }
-        />
+        <AppHeader />
         <ScrollView
           className="flex-1"
           contentContainerClassName="gap-6 px-5 pt-4"
