@@ -39,7 +39,13 @@ const AnimatedPressableRoot = React.forwardRef<
         onPressOut?.(e);
       }}
     >
-      <Animated.View style={press.style}>{children}</Animated.View>
+      {/* buttonStyle's flex-row/gap-2 live on the Pressable sibling above and can't be
+          duplicated onto this animated node via className, so mirror the row layout here */}
+      <Animated.View
+        style={[press.style, { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }]}
+      >
+        {children}
+      </Animated.View>
     </Pressable>
   );
 });

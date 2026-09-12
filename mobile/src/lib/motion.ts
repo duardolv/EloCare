@@ -19,24 +19,35 @@ export const springs = {
 } as const;
 
 const PRESS_SCALE = 0.97;
+const PRESS_OPACITY = 0.8;
 const STAGGER_MS = 40;
 const ENTER_DISTANCE = 10;
 
 export function usePressScale() {
   const reducedMotion = useReducedMotion();
   const scale = useSharedValue(1);
+  const opacity = useSharedValue(1);
 
   const style = useAnimatedStyle(() => ({
+    opacity: opacity.get(),
     transform: [{ scale: scale.get() }],
   }));
 
   const onPressIn = useCallback(() => {
-    if (!reducedMotion) scale.set(withSpring(PRESS_SCALE, springs.standard));
-  }, [reducedMotion, scale]);
+    if (reducedMotion) {
+      opacity.set(PRESS_OPACITY);
+    } else {
+      scale.set(withSpring(PRESS_SCALE, springs.standard));
+    }
+  }, [reducedMotion, scale, opacity]);
 
   const onPressOut = useCallback(() => {
-    if (!reducedMotion) scale.set(withSpring(1, springs.standard));
-  }, [reducedMotion, scale]);
+    if (reducedMotion) {
+      opacity.set(1);
+    } else {
+      scale.set(withSpring(1, springs.standard));
+    }
+  }, [reducedMotion, scale, opacity]);
 
   return { style, onPressIn, onPressOut };
 }
