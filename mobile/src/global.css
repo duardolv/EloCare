@@ -10,6 +10,15 @@
      (font-weight:600) has no real 600-weight face to switch to, so labels
      that need semibold select this family directly instead. */
   --font-label: 'AtkinsonHyperlegibleNext_600SemiBold';
+
+  /* Shadows tinted to the brand's foreground (36 51 47) instead of
+     Tailwind's default pure black — every card/avatar/header in the app
+     shares this, so a generic gray shadow would fight the warm palette. */
+  --shadow-2xs: 0 1px rgb(36 51 47 / 0.04);
+  --shadow-xs: 0 1px 2px 0 rgb(36 51 47 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(36 51 47 / 0.08), 0 1px 2px -1px rgb(36 51 47 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(36 51 47 / 0.08), 0 2px 4px -2px rgb(36 51 47 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(36 51 47 / 0.10), 0 4px 6px -4px rgb(36 51 47 / 0.06);
 }
 
 /* ─── Theme: design tokens (light / dark) ─────────────────────────
