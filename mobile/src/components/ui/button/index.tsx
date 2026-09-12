@@ -10,8 +10,41 @@ import {
 import { styled } from 'nativewind';
 import React from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import Animated from 'react-native-reanimated';
+
+import { usePressScale } from '@/lib/motion';
+
 const SCOPE = 'BUTTON';
-const Root = withStyleContext(Pressable, SCOPE);
+
+const AnimatedPressableRoot = React.forwardRef<
+  React.ComponentRef<typeof Pressable>,
+  Omit<React.ComponentProps<typeof Pressable>, 'children'> & {
+    // Narrowed from RNPressable's function-as-children form: the animated
+    // wrapper below needs a plain node, and no call site uses the function form.
+    children?: React.ReactNode;
+  }
+>(function AnimatedPressableRoot({ onPressIn, onPressOut, children, ...props }, ref) {
+  const press = usePressScale();
+
+  return (
+    <Pressable
+      {...props}
+      ref={ref}
+      onPressIn={(e) => {
+        press.onPressIn();
+        onPressIn?.(e);
+      }}
+      onPressOut={(e) => {
+        press.onPressOut();
+        onPressOut?.(e);
+      }}
+    >
+      <Animated.View style={press.style}>{children}</Animated.View>
+    </Pressable>
+  );
+});
+
+const Root = withStyleContext(AnimatedPressableRoot, SCOPE);
 const StyledUIIcon = styled(UIIcon, {
   className: "style",
 });
