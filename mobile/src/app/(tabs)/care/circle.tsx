@@ -43,9 +43,9 @@ export default function CareCircleScreen() {
               Membros Ativos
             </Heading>
             <HStack space="lg">
-              <FamilyMemberCard name="Familiar 1" relationship="Irmão" />
-              <FamilyMemberCard name="Familiar 2" relationship="Filha" />
-              <FamilyMemberCard name="Familiar 3" relationship="Neto" />
+              <FamilyMemberCard name="Familiar 1" relationship="Irmão" index={0} />
+              <FamilyMemberCard name="Familiar 2" relationship="Filha" index={1} />
+              <FamilyMemberCard name="Familiar 3" relationship="Neto" index={2} />
             </HStack>
           </VStack>
 
@@ -67,6 +67,7 @@ export default function CareCircleScreen() {
                 titleWeight="semibold"
                 subtitle="Atribuído a: Familiar 1"
                 trailing={<StatusPill label="Pendente" tone="neutral" />}
+                index={0}
               />
               <ActionListItem
                 icon={ShoppingCart}
@@ -75,6 +76,7 @@ export default function CareCircleScreen() {
                 titleWeight="semibold"
                 subtitle="Atribuído a: Familiar 2"
                 trailing={<StatusPill label="Concluído" tone="success" />}
+                index={1}
               />
               <ActionListItem
                 icon={CarTaxiFront}
@@ -83,6 +85,7 @@ export default function CareCircleScreen() {
                 titleWeight="semibold"
                 subtitle="Atribuído a: Familiar 3"
                 trailing={<StatusPill label="Agendado" tone="neutral" />}
+                index={2}
               />
             </VStack>
           </VStack>

@@ -59,12 +59,14 @@ export default function WeeklySummaryScreen() {
                 tone="destructive"
                 tagLabel="Prioridade"
                 description="Variação de temperatura reportada na quarta-feira (37.8°C). Recomendado verificar hoje."
+                index={0}
               />
               <AlertCard
                 icon={Pill}
                 tone="warning"
                 tagLabel="Rotina"
                 description="O Losartana está acabando em aproximadamente 4 dias."
+                index={1}
               />
             </VStack>
           </VStack>
@@ -86,6 +88,7 @@ export default function WeeklySummaryScreen() {
                 description={
                   'Semana geralmente positiva. Relatou sentir-se "muito bem" em 5 dos 7 dias. O sono pareceu tranquilo, com média de 7.5h.'
                 }
+                index={0}
               >
                 <TrendRow icon={TrendingUp} label="Estável e positivo" />
               </InsightCard>
@@ -95,6 +98,7 @@ export default function WeeklySummaryScreen() {
                 tone="primary"
                 title="Medicamentos"
                 description="Adesão de 100% registrada esta semana. Todas as doses de Losartana e Metformina foram marcadas no horário correto."
+                index={1}
               >
                 <TrendRow icon={CircleCheckBig} label="Rotina perfeita" />
               </InsightCard>
@@ -104,6 +108,7 @@ export default function WeeklySummaryScreen() {
                 tone="warning"
                 title="Agenda"
                 description="Compareceu à consulta de rotina com Dr. Silva. Fisioterapia realizada 2 vezes conforme programado."
+                index={2}
               >
                 <StatusPill tone="neutral" size="xs" label="Próx: Cárdio dia 24" />
               </InsightCard>
@@ -113,6 +118,7 @@ export default function WeeklySummaryScreen() {
                 tone="success"
                 title="Cuidado"
                 description="João visitou no domingo. Ligação de vídeo com a neta na terça-feira. Interação social regular mantida."
+                index={3}
               >
                 <AvatarGroup>
                   <Avatar className="h-8 w-8">

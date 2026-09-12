@@ -28,18 +28,21 @@ export default function AgendaScreen() {
               tone="primary"
               kind="Consulta"
               title="Cardiologista"
+              index={0}
             />
             <AppointmentCard
               icon={Microscope}
               tone="warning"
               kind="Exame"
               title="Exames de Sangue - Rotina"
+              index={1}
             />
             <AppointmentCard
               icon={Users}
               tone="accent"
               kind="Compromisso"
               title="Fisioterapia Semanal"
+              index={2}
             />
             <AppointmentCard
               icon={Brain}
@@ -47,6 +50,7 @@ export default function AgendaScreen() {
               kind="Consulta"
               title="Geriatra (Retorno)"
               faded
+              index={3}
             />
           </VStack>
 

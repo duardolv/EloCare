@@ -1,5 +1,6 @@
 import { ChevronRight } from 'lucide-react-native';
 import React from 'react';
+import Animated from 'react-native-reanimated';
 
 import { Card } from '@/components/ui/card';
 import { Heading } from '@/components/ui/heading';
@@ -9,6 +10,7 @@ import { Pressable } from '@/components/ui/pressable';
 import { Text } from '@/components/ui/text';
 import { VStack } from '@/components/ui/vstack';
 import { IconBadge } from '@/components/shared/icon-badge';
+import { useEnterFade } from '@/lib/motion';
 
 type ActionListItemProps = {
   icon: React.ComponentProps<typeof IconBadge>['icon'];
@@ -23,6 +25,7 @@ type ActionListItemProps = {
   trailing?: React.ReactNode;
   onPress?: () => void;
   className?: string;
+  index?: number;
 };
 
 export function ActionListItem({
@@ -35,27 +38,32 @@ export function ActionListItem({
   trailing = <Icon as={ChevronRight} className="text-muted-foreground" />,
   onPress,
   className,
+  index = 0,
 }: ActionListItemProps) {
+  const entrance = useEnterFade(index);
+
   return (
-    <Pressable onPress={onPress}>
-      <Card className={`flex-row items-center justify-between gap-4 p-5 ${className ?? ''}`}>
-        <HStack space="lg" className="flex-1 items-center">
-          <IconBadge icon={icon} tone={iconTone} solid={iconSolid} />
-          <VStack space="xs" className="flex-1 items-start">
-            {titleWeight === 'bold' ? (
-              <Heading size="sm">{title}</Heading>
-            ) : (
-              <Text size="md" className="font-label text-foreground">
-                {title}
+    <Animated.View style={entrance}>
+      <Pressable onPress={onPress}>
+        <Card className={`flex-row items-center justify-between gap-4 p-5 ${className ?? ''}`}>
+          <HStack space="lg" className="flex-1 items-center">
+            <IconBadge icon={icon} tone={iconTone} solid={iconSolid} />
+            <VStack space="xs" className="flex-1 items-start">
+              {titleWeight === 'bold' ? (
+                <Heading size="sm">{title}</Heading>
+              ) : (
+                <Text size="md" className="font-label text-foreground">
+                  {title}
+                </Text>
+              )}
+              <Text size="sm" className="text-muted-foreground">
+                {subtitle}
               </Text>
-            )}
-            <Text size="sm" className="text-muted-foreground">
-              {subtitle}
-            </Text>
-          </VStack>
-        </HStack>
-        {trailing}
-      </Card>
-    </Pressable>
+            </VStack>
+          </HStack>
+          {trailing}
+        </Card>
+      </Pressable>
+    </Animated.View>
   );
 }

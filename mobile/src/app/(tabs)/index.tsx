@@ -48,6 +48,7 @@ export default function HomeScreen() {
                 iconSolid
                 title="Resumo Semanal"
                 subtitle="Insights gentis sobre a rotina"
+                index={0}
               />
             </Link>
 
@@ -59,6 +60,7 @@ export default function HomeScreen() {
                 subtitle="Ative para passeios longos"
                 trailing={<Switch value={safeExitMode} onValueChange={setSafeExitMode} />}
                 className="border-0"
+                index={1}
               />
             </Link>
 
@@ -70,6 +72,7 @@ export default function HomeScreen() {
                 title="Diário Emocional"
                 subtitle="Verifique como foi a semana"
                 className="border-accent/50 bg-accent/20"
+                index={2}
               />
             </Link>
           </VStack>

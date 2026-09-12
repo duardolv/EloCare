@@ -70,6 +70,7 @@ export default function HistoryScreen() {
                   <ButtonText className="font-label text-base text-primary">Ligar</ButtonText>
                 </Button>
               }
+              index={0}
             />
           </VStack>
 
@@ -77,10 +78,10 @@ export default function HistoryScreen() {
             <Heading size="xl">Cofre de Documentos</Heading>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <HStack space="sm">
-                <DocumentTile icon={PillBottle} tone="primary" label="Receitas" />
-                <DocumentTile icon={TestTube} tone="accent" label="Exames" />
-                <DocumentTile icon={FileText} tone="warning" label="Relatórios" />
-                <DocumentTile icon={Folder} tone="muted" label="Outros" />
+                <DocumentTile icon={PillBottle} tone="primary" label="Receitas" index={0} />
+                <DocumentTile icon={TestTube} tone="accent" label="Exames" index={1} />
+                <DocumentTile icon={FileText} tone="warning" label="Relatórios" index={2} />
+                <DocumentTile icon={Folder} tone="muted" label="Outros" index={3} />
               </HStack>
             </ScrollView>
           </VStack>
@@ -94,6 +95,7 @@ export default function HistoryScreen() {
                 time="Hoje, 08:30"
                 description="Medição registrada: 120/80 mmHg. Dentro da normalidade."
                 tag={{ icon: CircleCheckBig, label: 'Aferido por Cuidador' }}
+                index={0}
               />
               <TimelineItem
                 tone="warning"
@@ -101,6 +103,7 @@ export default function HistoryScreen() {
                 time="Ontem, 19:15"
                 description="Dona Maria relatou uma leve dor de cabeça após o jantar."
                 tag={{ icon: Circle, label: 'Humor: Neutro' }}
+                index={1}
               />
               <TimelineItem
                 tone="primary"
@@ -108,6 +111,7 @@ export default function HistoryScreen() {
                 time="Ontem, 08:00"
                 description="Losartana 50mg administrada com sucesso."
                 faded
+                index={2}
               />
             </VStack>
           </VStack>
