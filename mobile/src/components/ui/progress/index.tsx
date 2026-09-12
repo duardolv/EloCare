@@ -4,11 +4,22 @@ import type { VariantProps } from '@gluestack-ui/utils/nativewind-utils';
 import { tva, useStyleContext, withStyleContext } from '@gluestack-ui/utils/nativewind-utils';
 import React from 'react';
 import { View } from 'react-native';
+import Animated, { LinearTransition } from 'react-native-reanimated';
 
 const SCOPE = 'PROGRESS';
+
+const AnimatedFilledTrack = React.forwardRef<
+  React.ComponentRef<typeof Animated.View>,
+  React.ComponentProps<typeof Animated.View>
+>(function AnimatedFilledTrack(props, ref) {
+  // Reanimated's own default spring — LinearTransition's builder doesn't
+  // expose the duration/dampingRatio config `springs.standard` uses.
+  return <Animated.View {...props} ref={ref} layout={LinearTransition.springify()} />;
+});
+
 export const UIProgress = createProgress({
   Root: withStyleContext(View, SCOPE),
-  FilledTrack: View,
+  FilledTrack: AnimatedFilledTrack,
 });
 
 const progressStyle = tva({
