@@ -28,7 +28,7 @@ type InfoListCardProps = {
 
 export function InfoListCard({ icon, tone, title, items }: InfoListCardProps) {
   return (
-    <Card className={`flex-1 gap-2 ${TONE_CLASSES[tone]}`}>
+    <Card className={`flex-1 gap-3 p-4 ${TONE_CLASSES[tone]}`}>
       <HStack space="sm" className={`items-center ${TONE_TEXT_CLASSES[tone]}`}>
         <Icon as={icon} size="md" className={TONE_TEXT_CLASSES[tone]} />
         <Heading size="sm" className={TONE_TEXT_CLASSES[tone]}>

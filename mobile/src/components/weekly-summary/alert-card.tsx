@@ -33,7 +33,7 @@ export function AlertCard({ icon, tone, tagLabel, description, index = 0 }: Aler
 
   return (
     <Animated.View style={entrance}>
-      <Card className={`flex-row gap-4 ${CARD_TONE_CLASSES[tone]}`}>
+      <Card className={`flex-row gap-3 p-4 ${CARD_TONE_CLASSES[tone]}`}>
         <IconBadge icon={icon} tone={tone} size="sm" />
         <VStack space="xs" className="flex-1 items-start">
           {/* Eyebrow tag — bold/uppercase, not the label-lg-based StatusPill */}

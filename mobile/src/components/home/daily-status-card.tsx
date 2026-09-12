@@ -8,7 +8,7 @@ import { Text } from '@/components/ui/text';
 
 export function DailyStatusCard() {
   return (
-    <Card className="items-center gap-2 p-5">
+    <Card className="items-center gap-4 p-5">
       <Icon as={Sun} size="xl" className="mb-1 text-success" />
       <Heading size="xl" className="text-primary">
         Dia Tranquilo

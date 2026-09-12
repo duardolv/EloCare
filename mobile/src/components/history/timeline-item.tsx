@@ -43,7 +43,7 @@ export function TimelineItem({ tone, title, time, description, tag, faded = fals
         <Box
           className={`mt-1 h-3 w-3 rounded-full border-2 bg-card ${DOT_BORDER_CLASSES[tone]}`}
         />
-        <Card className={`flex-1 gap-1 p-3 ${faded ? 'opacity-80' : ''}`}>
+        <Card className={`flex-1 gap-3 p-4 ${faded ? 'opacity-80' : ''}`}>
           <HStack className="items-start justify-between">
             <Heading size="sm">{title}</Heading>
             <Text size="xs" className="text-muted-foreground">

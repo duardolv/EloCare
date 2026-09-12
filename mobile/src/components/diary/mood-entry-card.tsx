@@ -34,7 +34,7 @@ export function MoodEntryCard({ time, title, description, emoji, tone, index = 0
         <Box
           className={`absolute -left-[29px] top-1 h-4 w-4 rounded-full border-2 border-background ${DOT_CLASSES[tone]}`}
         />
-        <Card className="gap-2 p-5">
+        <Card className="gap-4 p-5">
           <HStack className="items-start justify-between">
             <VStack space="xs">
               <Text size="md" className="font-label text-muted-foreground">

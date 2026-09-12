@@ -23,7 +23,7 @@ export function InsightCard({ icon, tone, title, description, children, index = 
 
   return (
     <Animated.View style={entrance}>
-      <Card className="flex-1 gap-3 p-5">
+      <Card className="flex-1 gap-4 p-5">
         <HStack space="sm" className="items-center">
           <IconBadge icon={icon} tone={tone} />
           <Heading size="lg">{title}</Heading>
