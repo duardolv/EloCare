@@ -18,7 +18,7 @@ export function AppHeader() {
         </Heading>
       </HStack>
 
-      <Pressable className="active:opacity-80">
+      <Pressable>
         <Avatar>
           <AvatarFallbackText>Família</AvatarFallbackText>
         </Avatar>

@@ -37,7 +37,7 @@ export function ActionListItem({
   className,
 }: ActionListItemProps) {
   return (
-    <Pressable onPress={onPress} className="active:opacity-80">
+    <Pressable onPress={onPress}>
       <Card className={`flex-row items-center justify-between gap-4 p-5 ${className ?? ''}`}>
         <HStack space="lg" className="flex-1 items-center">
           <IconBadge icon={icon} tone={iconTone} solid={iconSolid} />

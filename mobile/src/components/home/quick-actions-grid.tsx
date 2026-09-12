@@ -19,7 +19,7 @@ type ShortcutCardProps = {
 
 function ShortcutCard({ icon, tone, label, hasNotificationDot, onPress }: ShortcutCardProps) {
   return (
-    <Pressable onPress={onPress} className="flex-1 active:opacity-80">
+    <Pressable onPress={onPress} className="flex-1">
       <Card className="min-h-[110px] items-start justify-between gap-3 border-0">
         <Box>
           <IconBadge icon={icon} tone={tone} size="sm" />
