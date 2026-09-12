@@ -1,9 +1,11 @@
 import { Tabs, TabList, TabTrigger, TabSlot, TabTriggerSlotProps, TabListProps } from 'expo-router/ui';
 import { Pressable, StyleSheet } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { Box } from '@/components/ui/box';
 import { Text } from '@/components/ui/text';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { usePressScale } from '@/lib/motion';
 
 export default function AppTabs() {
   return (
@@ -29,14 +31,28 @@ export default function AppTabs() {
   );
 }
 
-export function TabButton({ children, isFocused, ...props }: TabTriggerSlotProps) {
+export function TabButton({ children, isFocused, onPressIn, onPressOut, ...props }: TabTriggerSlotProps) {
+  const press = usePressScale();
+
   return (
-    <Pressable {...props} style={({ pressed }) => pressed && styles.pressed}>
-      <Box className={isFocused ? 'bg-secondary' : 'bg-muted'} style={styles.tabButtonView}>
-        <Text size="sm" className={isFocused ? 'text-foreground' : 'text-muted-foreground'}>
-          {children}
-        </Text>
-      </Box>
+    <Pressable
+      {...props}
+      onPressIn={(e) => {
+        press.onPressIn();
+        onPressIn?.(e);
+      }}
+      onPressOut={(e) => {
+        press.onPressOut();
+        onPressOut?.(e);
+      }}
+    >
+      <Animated.View style={press.style}>
+        <Box className={isFocused ? 'bg-secondary' : 'bg-muted'} style={styles.tabButtonView}>
+          <Text size="sm" className={isFocused ? 'text-foreground' : 'text-muted-foreground'}>
+            {children}
+          </Text>
+        </Box>
+      </Animated.View>
     </Pressable>
   );
 }
@@ -70,9 +86,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: Spacing.two,
     maxWidth: MaxContentWidth,
-  },
-  pressed: {
-    opacity: 0.7,
   },
   tabButtonView: {
     paddingVertical: Spacing.one,
