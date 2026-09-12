@@ -27,15 +27,15 @@ export function usePressScale() {
   const scale = useSharedValue(1);
 
   const style = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
+    transform: [{ scale: scale.get() }],
   }));
 
   const onPressIn = useCallback(() => {
-    if (!reducedMotion) scale.value = withSpring(PRESS_SCALE, springs.standard);
+    if (!reducedMotion) scale.set(withSpring(PRESS_SCALE, springs.standard));
   }, [reducedMotion, scale]);
 
   const onPressOut = useCallback(() => {
-    if (!reducedMotion) scale.value = withSpring(1, springs.standard);
+    if (!reducedMotion) scale.set(withSpring(1, springs.standard));
   }, [reducedMotion, scale]);
 
   return { style, onPressIn, onPressOut };
@@ -47,17 +47,17 @@ export function useEnterFade(index = 0) {
 
   useEffect(() => {
     if (reducedMotion) {
-      progress.value = 1;
+      progress.set(1);
       return;
     }
-    progress.value = withDelay(index * STAGGER_MS, withSpring(1, springs.standard));
+    progress.set(withDelay(index * STAGGER_MS, withSpring(1, springs.standard)));
     // `progress` is a stable Reanimated shared-value ref; only `index` and
     // `reducedMotion` should retrigger the entrance.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, reducedMotion]);
 
   return useAnimatedStyle(() => ({
-    opacity: progress.value,
-    transform: [{ translateY: (1 - progress.value) * ENTER_DISTANCE }],
+    opacity: progress.get(),
+    transform: [{ translateY: (1 - progress.get()) * ENTER_DISTANCE }],
   }));
 }
