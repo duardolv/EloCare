@@ -56,6 +56,7 @@ export default function RadarScreen() {
                 iconTone="primary"
                 title="Círculo de Cuidado"
                 subtitle="Veja a rede de apoio e as tarefas da família"
+                index={0}
               />
             </Link>
 
@@ -65,6 +66,7 @@ export default function RadarScreen() {
                 iconTone="success"
                 title="Adesão"
                 subtitle="Acompanhe o uso contínuo dos medicamentos"
+                index={1}
               />
             </Link>
           </VStack>

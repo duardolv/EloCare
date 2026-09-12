@@ -58,8 +58,8 @@ export default function DiaryScreen() {
           </Heading>
 
           <VStack space="lg" className="border-l-2 border-border pl-6">
-            {ENTRIES.map((entry) => (
-              <MoodEntryCard key={entry.time + entry.title} {...entry} />
+            {ENTRIES.map((entry, index) => (
+              <MoodEntryCard key={entry.time + entry.title} {...entry} index={index} />
             ))}
           </VStack>
 

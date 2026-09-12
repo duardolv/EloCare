@@ -13,7 +13,7 @@ type ObservationCardProps = {
 
 export function ObservationCard({ icon, label, description }: ObservationCardProps) {
   return (
-    <Card className="flex-1 gap-2 p-4">
+    <Card className="flex-1 gap-3 p-4">
       <HStack space="sm" className="items-center">
         <Icon as={icon} size="lg" className="text-primary" />
         <Text size="md" className="font-label text-foreground">

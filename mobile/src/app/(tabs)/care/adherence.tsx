@@ -75,11 +75,11 @@ export default function AdherenceScreen() {
 
           <VStack space="md">
             {filter === 'pending'
-              ? PENDING_MEDICATIONS.map((medication) => (
-                  <MedicationCard key={medication.name} variant="pending" {...medication} />
+              ? PENDING_MEDICATIONS.map((medication, index) => (
+                  <MedicationCard key={medication.name} variant="pending" {...medication} index={index} />
                 ))
-              : TAKEN_MEDICATIONS.map((medication) => (
-                  <MedicationCard key={medication.name} variant="taken" {...medication} />
+              : TAKEN_MEDICATIONS.map((medication, index) => (
+                  <MedicationCard key={medication.name} variant="taken" {...medication} index={index} />
                 ))}
           </VStack>
 
